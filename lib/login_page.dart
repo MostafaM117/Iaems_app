@@ -15,7 +15,7 @@ class _LoginPageState extends State<LoginPage> {
         title: const Center(child: Text('Login')),
       ),
       body: const Center(
-        child: Text('This will be the login page.'),
+        child: Text('Updated Login Page Title for github'),
       ),
     );
   }
