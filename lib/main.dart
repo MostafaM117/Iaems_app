@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:iaems_app/login_page.dart';
 import 'package:iaems_app/profile_page.dart';
+import 'package:iaems_app/guest_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const ProfilePage(),
+      home: const GuestPage(),
     );
   }
 }
