@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "30619559709",
+    "project_id": "iaems-d950c",
+    "storage_bucket": "iaems-d950c.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:30619559709:android:102a59341072bf482923f4",
+        "android_client_info": {
+          "package_name": "com.example.iaems_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDBsc1vN-ZLbLUectqJhOBAhh4cHUQA_bo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
