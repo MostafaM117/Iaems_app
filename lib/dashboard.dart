@@ -26,17 +26,19 @@ class _DashboardState extends State<Dashboard> {
             )]
       ),
       // body: Center(child: Text("Signed in as:" + user.email!)),
-       body: Container(
+      body: Container(
           padding: const EdgeInsets.only(top: 50.0, bottom: 5.0, right: 10.0, left: 10.0),
           child: Column(
             children: [
               const Expanded(
                 flex: 1,
-                child: Column(
-                  children: [
-                    NotifyDropDown(),
-                    TimelineDropDown(),
-                  ],
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      NotifyDropDown(),
+                      TimelineDropDown(),
+                    ],
+                  ),
                 ),
               ),
               Container(
