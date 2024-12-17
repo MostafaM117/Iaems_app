@@ -1,10 +1,9 @@
-import 'package:flutter/material.dart';
-import 'package:iaems_app/login_page.dart';
-import 'package:iaems_app/profile_page.dart';
-import 'package:iaems_app/guest_page.dart';
-
-void main() {
-  runApp(const MyApp());
+import 'package:iaems_app/welcome_page.dart';
+import 'package:firebase_core/firebase_core.dart';
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -14,12 +13,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: 'Iaems',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const GuestPage(),
+      home: const WelcomePage(),
     );
   }
 }
