@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:iaems_app/welcome_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 void main() async{
@@ -14,7 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: 'Iaems',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
