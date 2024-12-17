@@ -19,13 +19,13 @@ class _LoginPageState extends State<LoginPage> {
     final String password = _passwordcontroller.text.trim();
     if(email.isEmpty){
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('An email address is required')),
+        const SnackBar(content: Text('An email address is required')),
       );
       return;
     }
     if(password.isEmpty){
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Please enter your password')),
+        const SnackBar(content: Text('Please enter your password')),
       );
       return;
     }
@@ -33,14 +33,14 @@ class _LoginPageState extends State<LoginPage> {
     await FirebaseAuth.instance.signInWithEmailAndPassword(
       email: _emailcontroller.text.trim(),
       password: _passwordcontroller.text.trim());
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Logged in successfully'),
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Logged in successfully'),
       backgroundColor: Colors.green,));
     } on FirebaseAuthException catch (e) {
       
       print('Error code : ${e.code}');
       if (e.code == 'too-many-requests'){
       ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
+          const SnackBar(
             content: Text('This device is temporarily blocked due to much failed login attempts, try again later.'),
             backgroundColor: Colors.red,
           ),
@@ -48,7 +48,7 @@ class _LoginPageState extends State<LoginPage> {
       }
       else if (e.code == 'user-not-found'){
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
+          const SnackBar(
             content: Text('No user found with this email'),
             backgroundColor: Colors.red,
           ),
@@ -56,15 +56,15 @@ class _LoginPageState extends State<LoginPage> {
       }
       else if (e.code == 'invalid-credential'){
       ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
+          const SnackBar(
             content: Text('Incorrect email or Password'),
           ),
         );
       }
       else if (e.code == 'invalid-email'){
       ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text('Please enter a valid email address'),
+          const SnackBar(
+            content: Text('Please enter a valid email address.'),
           ),
         );
       }
@@ -75,7 +75,7 @@ class _LoginPageState extends State<LoginPage> {
     try {
       UserCredential userCredential = await FirebaseAuth.instance.signInAnonymously();
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
+        const SnackBar(
           content: Text('Signed in as Guest'),
           backgroundColor: Colors.green,
         ),
@@ -101,35 +101,35 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF5D7B7D),
+      backgroundColor: const Color(0xFF5D7B7D),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(22.0),
           child: Column(
             children: [
-              SizedBox(
+              const SizedBox(
                 height: 220,
               ),
-              Text("Log in", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 40, color: Colors.white),),
-              SizedBox(height: 80,),
+              const Text("Log in", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 40, color: Colors.white),),
+              const SizedBox(height: 80,),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextField(
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: Colors.white,
                   ),
                   cursorColor: Colors.blueGrey.shade200,
                   controller: _emailcontroller,
                   decoration: InputDecoration(
-                    contentPadding: EdgeInsets.all(15.0),
-                    prefixIcon: Icon(Icons.person),
+                    contentPadding: const EdgeInsets.all(15.0),
+                    prefixIcon: const Icon(Icons.person),
                     hintText: 'Email',
                     enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.white, width: 0.2),
+                      borderSide: const BorderSide(color: Colors.white, width: 0.2),
                       borderRadius: BorderRadius.circular(30),
                     ),
                     focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.black, width: 0.5),
+                      borderSide: const BorderSide(color: Colors.black, width: 0.5),
                       borderRadius: BorderRadius.circular(12),
                     )
                   ),
@@ -139,28 +139,28 @@ class _LoginPageState extends State<LoginPage> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextField(
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: Colors.white,
                   ),
                   controller: _passwordcontroller,
                   cursorColor: Colors.blueGrey.shade200,
                   obscureText: true,
                   decoration: InputDecoration(
-                    contentPadding: EdgeInsets.all(15.0),
-                    prefixIcon: Icon(Icons.lock),
+                    contentPadding: const EdgeInsets.all(15.0),
+                    prefixIcon: const Icon(Icons.lock),
                     hintText: 'Password',
                     enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.white, width: 0.2),
+                      borderSide: const BorderSide(color: Colors.white, width: 0.2),
                       borderRadius: BorderRadius.circular(30),
                     ),
                     focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.black, width: 0.5),
+                      borderSide: const BorderSide(color: Colors.black, width: 0.5),
                       borderRadius: BorderRadius.circular(12),
                     )
                   ),
                 ),
               ),
-              SizedBox(height: 5,),
+              const SizedBox(height: 5,),
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
@@ -169,12 +169,12 @@ class _LoginPageState extends State<LoginPage> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => ForgotPasswordPage(),
+                            builder: (context) => const ForgotPasswordPage(),
                           ));
                     },
-                    child: Text("Forgot password ?", 
+                    child: const Text("Forgot password ?", 
                     style: TextStyle(color: Colors.black, fontSize: 14, fontWeight: FontWeight.bold, decoration: TextDecoration.underline),)),
-                  SizedBox(width: 10,),
+                  const SizedBox(width: 10,),
                 ],
               ),
               const SizedBox(
@@ -195,9 +195,9 @@ class _LoginPageState extends State<LoginPage> {
                     padding: const EdgeInsets.only(left: 30, right: 30, top: 10, bottom: 10),
                   ), child: const Text("Login", style: TextStyle(color: Colors.white, fontSize: 20),)
                   ),
-                  SizedBox(width: 10,),
-                  Text("or", style: TextStyle(color: Colors.white, fontSize: 20)),
-                  SizedBox(width: 10,),
+                  const SizedBox(width: 10,),
+                  const Text("or", style: TextStyle(color: Colors.white, fontSize: 20)),
+                  const SizedBox(width: 10,),
                   OutlinedButton(
                     onPressed: (){
                       signInAnonymously();
