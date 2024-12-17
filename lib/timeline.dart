@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:iaems_app/colors.dart';
 
 class TimelineDropDown extends StatelessWidget {
   const TimelineDropDown({super.key});
@@ -6,8 +7,11 @@ class TimelineDropDown extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: const Color.fromARGB(255, 46, 126, 122), 
       child: Container(
+        decoration: BoxDecoration(
+          color: AppColors.darkBlue,
+          borderRadius: BorderRadius.circular(15.0)
+        ),
         child: const ExpansionTile(
           title: Text(
             "Timeline",
@@ -17,6 +21,8 @@ class TimelineDropDown extends StatelessWidget {
               color: Colors.white,
             ),
           ),
+          iconColor: Colors.white,
+          collapsedIconColor: Colors.white,
           initiallyExpanded: false,
           children: [
             SizedBox(
@@ -65,6 +71,7 @@ class _TimelineWidgetState extends State<TimelineWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
+        color: AppColors.LightBlue,
         padding: const EdgeInsets.all(16.0),
         child: SingleChildScrollView(
           scrollDirection: Axis.horizontal,  
@@ -75,27 +82,36 @@ class _TimelineWidgetState extends State<TimelineWidget> {
                 return Column(
                   children:  List.generate(4, (rowIndex) {
                     if (colIndex == 0 && rowIndex == 0){
-                      return const SizedBox(
+                      return Container(
                         width: 55.0,
                         height: 55.0,
-                      );
+                        padding: const EdgeInsets.all(5.0),
+                        decoration: const BoxDecoration(
+                        border: Border(
+                         top: BorderSide(color: AppColors.darkBlue, width: 2.0),
+                         left: BorderSide(color: AppColors.darkBlue, width: 2.0),
+                         ),
+                         borderRadius: BorderRadius.only( topLeft: Radius.circular(30.0),)
+                        ),
+                       );
                     }
                     if (rowIndex == 0 && colIndex > 0) {
                       return Container(
                         width: 55.0,
                         height: 55.0,
+                        padding: const EdgeInsets.all(5.0),
                         decoration: const BoxDecoration(
                           border: Border(
-                           right: BorderSide(color: Colors.red, width: 2.0),
-                           bottom: BorderSide(color: Colors.red, width: 2.0)
+                            right: BorderSide(color: AppColors.darkBlue, width: 2.0),
+                            bottom: BorderSide(color: AppColors.darkBlue, width: 2.0),
+                            top: BorderSide(color: AppColors.darkBlue, width: 2.0),
                           ),
-                          borderRadius: BorderRadius.only( bottomRight: Radius.circular(12.0),)
                         ),
                         child: Center(
                           child: Text(
                             days[colIndex - 1],
                             style: const TextStyle(
-                              fontSize: 15.0,
+                              fontSize: 14.0,
                               color: Colors.black
                             )
                           ),
@@ -106,20 +122,19 @@ class _TimelineWidgetState extends State<TimelineWidget> {
                       return Container(
                         width: 55.0,
                         height: 55.5,
+                        padding: const EdgeInsets.all(5.0),
                         decoration: const BoxDecoration(
                           border: Border(
-                            right: BorderSide(color: Colors.red, width: 2.0),
-                            bottom: BorderSide(color: Colors.red, width: 2.0),
-                          ),
-                          borderRadius: BorderRadius.only(
-                            bottomRight: Radius.circular(12.0),
+                            right: BorderSide(color: AppColors.darkBlue, width: 2.0),
+                            bottom: BorderSide(color: AppColors.darkBlue, width: 2.0),
+                            left: BorderSide(color: AppColors.darkBlue, width: 2.0),
                           ),
                         ),
                         child: Center(
                           child: Text(
                             time[rowIndex - 1],
                             style: const TextStyle(
-                              fontSize: 15.0,
+                              fontSize: 14.0,
                               color: Colors.black
                             ),
                           ),

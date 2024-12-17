@@ -101,16 +101,25 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF5D7B7D),
-      body: SingleChildScrollView(
+      body: Stack(
+        children: [
+          Positioned.fill(
+            child:Image.asset(
+              'assets/login.png',
+              fit: BoxFit.cover,
+            )
+            ),
+            SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(22.0),
-          child: Column(
+          child: Container(
+            height: 720,
+            child: Column(
             children: [
               SizedBox(
                 height: 220,
               ),
-              Text("Log in", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 40, color: Colors.white),),
+              Text("Log in", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 50, color: Colors.white),),
               SizedBox(height: 80,),
               Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -118,12 +127,13 @@ class _LoginPageState extends State<LoginPage> {
                   style: TextStyle(
                     color: Colors.white,
                   ),
-                  cursorColor: Colors.blueGrey.shade200,
+                  cursorColor: Colors.white,
                   controller: _emailcontroller,
                   decoration: InputDecoration(
-                    contentPadding: EdgeInsets.all(15.0),
-                    prefixIcon: Icon(Icons.person),
+                    contentPadding: EdgeInsets.all(20.0),
+                    prefixIcon: Icon(Icons.person, color: Colors.white,),
                     hintText: 'Email',
+                    hintStyle: TextStyle(color: Colors.white),
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.white, width: 0.2),
                       borderRadius: BorderRadius.circular(30),
@@ -143,12 +153,13 @@ class _LoginPageState extends State<LoginPage> {
                     color: Colors.white,
                   ),
                   controller: _passwordcontroller,
-                  cursorColor: Colors.blueGrey.shade200,
+                  cursorColor: Colors.white,
                   obscureText: true,
                   decoration: InputDecoration(
-                    contentPadding: EdgeInsets.all(15.0),
-                    prefixIcon: Icon(Icons.lock),
+                    contentPadding: EdgeInsets.all(20.0),
+                    prefixIcon: Icon(Icons.lock, color: Colors.white,),
                     hintText: 'Password',
+                    hintStyle: TextStyle(color: Colors.white),
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.white, width: 0.2),
                       borderRadius: BorderRadius.circular(30),
@@ -172,13 +183,13 @@ class _LoginPageState extends State<LoginPage> {
                             builder: (context) => ForgotPasswordPage(),
                           ));
                     },
-                    child: Text("Forgot password ?", 
-                    style: TextStyle(color: Colors.black, fontSize: 14, fontWeight: FontWeight.bold, decoration: TextDecoration.underline),)),
+                    child: const Text("Forgot password ?", 
+                    style: TextStyle(color: Colors.white, fontSize: 14, fontWeight: FontWeight.bold, decoration: TextDecoration.underline),)),
                   SizedBox(width: 10,),
                 ],
               ),
               const SizedBox(
-                height: 50,
+                height: 20,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -191,7 +202,7 @@ class _LoginPageState extends State<LoginPage> {
                       width: 0.2,
                       color: Colors.white,
                     ),
-                    disabledBackgroundColor: Colors.grey,
+                    disabledBackgroundColor: Colors.white,
                     padding: const EdgeInsets.only(left: 30, right: 30, top: 10, bottom: 10),
                   ), child: const Text("Login", style: TextStyle(color: Colors.white, fontSize: 20),)
                   ),
@@ -206,7 +217,7 @@ class _LoginPageState extends State<LoginPage> {
                       width: 0.2,
                       color: Colors.white,
                     ),
-                    disabledBackgroundColor: Colors.grey,
+                    disabledBackgroundColor: Colors.white,
                     padding: const EdgeInsets.only(left: 20, right: 20, top: 10, bottom: 10),
                   ), child: const Text("I'm a Guest", style: TextStyle(color: Colors.white, fontSize: 20),)
                   ),
@@ -214,8 +225,11 @@ class _LoginPageState extends State<LoginPage> {
               )
             ],
           ),
+          )
         ),
       ),
+        ],
+      )
     );
   }
 }
