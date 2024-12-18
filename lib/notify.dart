@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:iaems_app/colors.dart';
 
 class NotifyDropDown extends StatelessWidget {
   const NotifyDropDown({super.key});
@@ -6,8 +7,11 @@ class NotifyDropDown extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: const Color.fromARGB(255, 177, 96, 96),
       child: Container(
+        decoration: BoxDecoration(
+          color: AppColors.darkBlue,
+          borderRadius: BorderRadiusDirectional.circular(15.0)
+        ),
         child: const ExpansionTile(
           title: Text(
             "Notifications",
@@ -17,6 +21,8 @@ class NotifyDropDown extends StatelessWidget {
               color: Colors.white,
             ),
           ),
+          iconColor: Colors.white,
+          collapsedIconColor: Colors.white,
           initiallyExpanded: false,
           children: [
             SizedBox(
@@ -45,6 +51,7 @@ class _NotificationWidgetState extends State<NotificationWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
+        color: AppColors.LightBlue,
         padding: const EdgeInsets.symmetric(horizontal: 16.0),
         child:Column(
           children: [
@@ -52,15 +59,41 @@ class _NotificationWidgetState extends State<NotificationWidget> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 const Text(
-                  "Day Date",
+                  "Today's Messages ",
                   style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold)
-                ),
-                IconButton(
-                  onPressed: () {setState(() {
-                    notifications.clear();
-                  });
+                ),IconButton(
+                  onPressed: (){
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context){
+                        return AlertDialog(
+                          title: const Text("Delete All Notifications?"),
+                          content: const Text("Are you sure you want to delete all these notifications?"),
+                          actions: [
+                            TextButton(
+                              onPressed: (){
+                                Navigator.pop(context);
+                              },
+                              child: const Text("Cancel", style: TextStyle(color: AppColors.darkBlue),),
+                               
+                              ),
+                              TextButton(
+                                onPressed:(){
+                                  setState(() {
+                                    notifications.clear();
+                                  });
+                                  Navigator.pop(context);
+                                },
+                                child:  const Text("Delete",style: TextStyle(color: AppColors.darkBlue),),
+                                )
+                          ],
+                        );
+                      }
+                      );
                   },
-                  icon: const Icon(Icons.delete)
+                  icon: const Icon(Icons.delete,color: AppColors.darkBlue,size: 22,),
+
+                 
                 )
               ],
             ),
@@ -78,7 +111,7 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                     key: ValueKey(notifications[index]),
                     background: Container(
                       decoration: BoxDecoration(
-                        color: Colors.green,
+                        color: Colors.black.withOpacity(0.2),
                         borderRadius: BorderRadius.circular(30.0),
                       ),
                       alignment: Alignment.centerLeft,
@@ -87,7 +120,7 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                     ),
                     secondaryBackground: Container(
                      decoration: BoxDecoration(
-                      color: Colors.red,
+                      color: Colors.black.withOpacity(0.2),
                       borderRadius: BorderRadius.circular(30.0),
                      ),
                      alignment: Alignment.centerRight,
@@ -114,7 +147,7 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                     padding: const EdgeInsets.all(15.0),
                       margin: const EdgeInsets.only(bottom: 10.0),
                       decoration: BoxDecoration(
-                        color: Colors.grey,
+                        color: Colors.black.withOpacity(0.1),
                         borderRadius: BorderRadius.circular(20.0),
                       ),
                       child: SingleChildScrollView(
@@ -148,16 +181,16 @@ class _NotificationWidgetState extends State<NotificationWidget> {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.grey,
-        onPressed: _addNotification,
-        child: const Icon(Icons.add),
-      ),
+      // floatingActionButton: FloatingActionButton(
+      //   backgroundColor: Colors.grey,
+      //   onPressed: _addNotification,
+      //   child: const Icon(Icons.add),
+      // ),
     );
   }
-  void _addNotification(){
-    setState(() {
-      notifications.add("Notification ${notifications.length + 1}");
-    });
-  }
+  // void _addNotification(){
+  //   setState(() {
+  //     notifications.add("Notification ${notifications.length + 1}");
+  //   });
+  // }
 }
