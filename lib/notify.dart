@@ -109,34 +109,36 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                       }
                     },
                     child: Container(
-                     width: double.infinity, 
-                     height: 70.0,
-                     padding: const EdgeInsets.all(15.0),
+                    width: double.infinity, 
+                    height: 70.0,
+                    padding: const EdgeInsets.all(15.0),
                       margin: const EdgeInsets.only(bottom: 10.0),
                       decoration: BoxDecoration(
                         color: Colors.grey,
                         borderRadius: BorderRadius.circular(20.0),
                       ),
-                      child: Column(
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(notifications[index], style: const TextStyle(fontSize: 16.0),),
-                              const Text("Time")
-                            ],
-                          ),
-                          const SizedBox(
-                            width: double.infinity,
-                            child: Text(
-                              "Description",
-                              textAlign: TextAlign.start,
-                              style: TextStyle(fontSize: 15.0),
-                              overflow: TextOverflow.ellipsis,
-                              maxLines: 1,
+                      child: SingleChildScrollView(
+                        child: Column(
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(notifications[index], style: const TextStyle(fontSize: 16.0),),
+                                const Text("Time")
+                              ],
                             ),
-                          )
-                        ],
+                            const SizedBox(
+                              width: double.infinity,
+                              child: Text(
+                                "Description",
+                                textAlign: TextAlign.start,
+                                style: TextStyle(fontSize: 15.0),
+                                overflow: TextOverflow.ellipsis,
+                                maxLines: 1,
+                              ),
+                            )
+                          ],
+                        ),
                       ),
                     )
                   );
